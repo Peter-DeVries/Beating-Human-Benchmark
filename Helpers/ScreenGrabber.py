@@ -6,9 +6,8 @@ from mss import mss
 
 # Class for mss to take screenshots. Will need to change monitor_number depending on the amount of monitors used.
 class ScreenGrabber:
-    def __init__(self, top_left_x, top_left_y_from_top, width, height):
+    def __init__(self, top_left_x, top_left_y_from_top, width, height, monitor_number):
         self.screen_shot = None
-        monitor_number = 1
 
         with mss() as sct:
             mon = sct.monitors[monitor_number]
