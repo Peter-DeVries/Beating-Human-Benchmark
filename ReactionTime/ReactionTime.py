@@ -1,16 +1,14 @@
 from Helpers.ScreenGrabber import *
 import pyautogui
 
-# Define the RGB values for red and green for both mac and windows (values might be different based on machine)
-windows_red_color = [206, 38, 54]
-windows_green_color = [75, 219, 106]
-mac_red_color = [189, 56, 60]
-mac_green_color = [119, 216, 119]
+# Define the RGB values for red and green (values might be different based on machine)
+red_color = [206, 38, 54]
+green_color = [75, 219, 106]
 width = 2560
 height = 1440
 
 # Locate pixel location on screen
-res = pyautogui.locateOnScreen("Reaction_Time_Test.png")
+res = pyautogui.locateOnScreen("Reaction_Time_Test.png", confidence=0.5)
 x, y = res.left, res.top
 
 # Instantiates the ScreenGabber class which utilizes mss for fastest times possible
@@ -24,12 +22,12 @@ def reaction_time():
         current_color = screen_grabber.get_pixel_color(x, y)
 
         # Check if pixel is red
-        if current_color == windows_red_color or current_color == mac_red_color:
+        if current_color == red_color:
             while True:
                 # Wait until changes to green
                 screen_grabber.take_screen_shot()
                 current_color = screen_grabber.get_pixel_color(x, y)
-                if current_color == windows_green_color or current_color == mac_green_color:
+                if current_color == green_color:
                     pyautogui.click(x, y)
                     break
 
