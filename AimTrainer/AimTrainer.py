@@ -1,4 +1,3 @@
-import time
 import pyautogui
 from Helpers.ScreenGrabber import *
 
