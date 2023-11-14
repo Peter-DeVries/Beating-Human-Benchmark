@@ -2,16 +2,22 @@ import time
 import pyautogui
 from Helpers.ScreenGrabber import *
 
-# Define the region to search for the target color
-start_x = 326
-start_y = 242
-end_x = 1226
-end_y = 680
+# Define the RGB values for red and green (values might be different based on machine)
+target_color = [149, 195, 232]
+stop_color = [255, 209, 84]
+width = 2560
+height = 1440
+step = 15
 
-# Define the target color in (R, G, B) format
-target_color = [163, 194, 229]
+# Locate pixel location on screen
+res = None
+while res is None:
+    res = pyautogui.locateOnScreen("Aim_Trainer.png", confidence=0.5)
+start_x, start_y = res.left, res.top
+end_x, end_y = res.left + res.width, res.top + res.height
 
-screen_grabber = ScreenGrabber(0, 0, 1440, 900, -1)
+# Instantiates the ScreenGabber class which utilizes mss for fastest times possible
+screen_grabber = ScreenGrabber(0, 0, width, height, -1)
 screen_grabber.take_screen_shot()
 
 
@@ -21,9 +27,11 @@ def aim_trainer():
             screen_grabber.take_screen_shot()
 
             # Loop through the specified region and check for the target color
-            for y in range(start_y, end_y + 1):
-                for x in range(start_x, end_x + 1):
+            for y in range(start_y, end_y + 1, step):
+                for x in range(start_x, end_x + 1, step):
                     pixel_color = screen_grabber.get_pixel_color(x, y)
+                    if pixel_color == stop_color:
+                        return
                     if pixel_color == target_color:
                         # Click the pixel if the target color is found
                         pyautogui.click(x, y)
@@ -34,5 +42,7 @@ def aim_trainer():
 
 
 if __name__ == '__main__':
-    time.sleep(5)
+    pyautogui.PAUSE = 0.0
+    pyautogui.MINIMUM_DURATION = 0.0
+    pyautogui.FAILSAFE = True
     aim_trainer()

@@ -8,7 +8,9 @@ width = 2560
 height = 1440
 
 # Locate pixel location on screen
-res = pyautogui.locateOnScreen("Reaction_Time_Test.png", confidence=0.5)
+res = None
+while res is None:
+    res = pyautogui.locateOnScreen("Reaction_Time_Test.png", confidence=0.5)
 x, y = res.left, res.top
 
 # Instantiates the ScreenGabber class which utilizes mss for fastest times possible

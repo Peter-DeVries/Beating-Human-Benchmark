@@ -2,16 +2,16 @@ import time
 import pyautogui
 from Helpers.ScreenGrabber import *
 
-# Define the region to search for the target color
-start_x = 326
-start_y = 242
-end_x = 1226
-end_y = 680
+# Locate pixel location on screen
+res = None
+while res is None:
+    res = pyautogui.locateOnScreen("Aim_Trainer.png", confidence=0.5)
+x, y = res.left, res.top
 
 # Define the target color in (R, G, B) format
 target_color = [177, 215, 252]
 
-screen_grabber = ScreenGrabber(0, 0, 1440, 900, -1)
+screen_grabber = ScreenGrabber(0, 0, 2560, 1440, -1)
 screen_grabber.take_screen_shot()
 
 pyautogui.PAUSE = 0.0
