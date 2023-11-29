@@ -1,11 +1,7 @@
-TO BE DONE
+Libraries required:
+- selenium 
+- bs4 (BeautifulSoup4)
+- pyautogui
 
-(Supports Mac and Windows) - Don't add this just adding this,
-so I can test git commits on my Mac.
-
-No editing needed.
-
-Libraries used:
- - selenium
- - bs4 (BeautifulSoup4)
- - pyautogui
+Typing.py opens human benchmark's typing test in a Selenium window, allowing it to scrape the required text
+and enter it fast a few seconds later.

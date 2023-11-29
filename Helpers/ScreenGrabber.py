@@ -4,7 +4,7 @@ import cv2
 from mss import mss
 
 
-# Class for mss to take screenshots. Will need to change monitor_number depending on the amount of monitors used.
+# Class for mss to take screenshots. Will need to change monitor_number depending on target monitor.
 class ScreenGrabber:
     def __init__(self, top_left_x, top_left_y_from_top, width, height, monitor_number):
         self.screen_shot = None
