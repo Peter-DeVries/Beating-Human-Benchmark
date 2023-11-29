@@ -3,7 +3,7 @@ Libraries required:
 - bs4 (BeautifulSoup4)
 - pyautogui
 
-NumberMemory.py opens human benchmark's number memory test in a Selenium window, allowing it to scrape
+NumberMemory.py opens HumanBenchmark's number memory test in a Selenium window, allowing it to scrape
 the required numbers and enter it a few seconds later. Time was used to wait for the delay as there's a
 linear delay with each number added to the challenge.
 
