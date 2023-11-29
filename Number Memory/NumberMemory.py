@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import pyautogui
 
 
-def typing():
+def number_memory():
     # Set up the driver
     driver = webdriver.Chrome()
 
@@ -34,4 +34,4 @@ def typing():
 
 # Call the function with an optional interval (default is 1 second)
 if __name__ == '__main__':
-    typing()
+    number_memory()
